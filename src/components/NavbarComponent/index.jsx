@@ -27,30 +27,10 @@ export const NavbarComponent = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <CatComponent
-              name={NAME_CAT_1}
-              href={
-                "https://media.tenor.com/images/a199dabf8ed6b49b2bfd100aa629e4ae/tenor.gif"
-              }
-            />
-            <CatComponent
-              name={NAME_CAT_2}
-              href={
-                "https://media.tenor.com/images/48570e6388ba1ccc702c005fe943e94b/tenor.gif"
-              }
-            />
-            <CatComponent
-              name={NAME_CAT_3}
-              href={
-                "https://media1.tenor.com/images/46734e53d1e2d9121ffbd873a6947973/tenor.gif"
-              }
-            />
-            <CatComponent
-              name={NAME_CAT_4}
-              href={
-                "https://media1.tenor.com/images/7820eec661baee6b08122f41e31de4b9/tenor.gif"
-              }
-            />
+            <CatComponent />
+            <CatComponent />
+            <CatComponent />
+            <CatComponent />
             <CartWidget></CartWidget>
           </div>
         </div>

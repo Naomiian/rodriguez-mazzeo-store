@@ -1,9 +1,7 @@
-const CatComponent = ({ name, href }) => {
-  return (
-    <a className="nav-link" href={href}>
-      {name}
-    </a>
-  );
+import ItemList from "../../containers/ItemList";
+import CardContainer from "../../containers/CardContainer";
+const CatComponent = () => {
+  return <CardContainer></CardContainer>;
 };
 
 export default CatComponent;

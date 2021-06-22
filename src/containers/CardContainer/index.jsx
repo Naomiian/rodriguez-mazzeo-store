@@ -1,15 +1,20 @@
 import CardComponent from "../../components/CardComponent";
 
 const CardContainer = () => {
-    const product ={ name,price},title;
+  const product = {
+    name: "Nombre Producto",
+    price: 999,
+    description: "Descripcion Producto",
+    counter: 0,
+  };
   return (
-    <div class="card" style="width: 18rem;">
+    <div className="card" style={{ width: "18rem" }}>
       {/* <img src="..." class="card-img-top" alt="..."></img> */}
-      <div class="card-body">
-        <CardComponent product title></CardComponent>
+      <div className="card-body">
+        <CardComponent product={product}></CardComponent>
       </div>
     </div>
   );
 };
 
-export default CardContainer
+export default CardContainer;

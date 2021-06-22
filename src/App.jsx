@@ -9,7 +9,6 @@ function App() {
     <div className="App">
       <h1>{NAME_APP}</h1>
       <NavbarComponent />
-      <ItemList />
     </div>
   );
 }
