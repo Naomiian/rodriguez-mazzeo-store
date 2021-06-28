@@ -1,4 +1,4 @@
-const ItemCount = ({ stock, initial, onAdd, counter, setCounter }) => {
+const ItemCount = ({ stock, onAdd, counter, setCounter }) => {
   const add = () => {
     if (counter < stock) {
       setCounter((prevCounter) => ++prevCounter);
