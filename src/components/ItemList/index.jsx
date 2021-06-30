@@ -1,10 +1,17 @@
 import Item from "../Item";
+import "./itemList.css";
 
-const ItemList = ({ productos }) => {
+const ItemList = ({ setSelectedId, productos }) => {
   const renderItems = (productos) => {
-    return productos.map((producto) => <Item producto={producto}></Item>);
+    return productos.map((producto) => (
+      <Item
+        key={producto.id}
+        setSelectedId={setSelectedId}
+        producto={producto}
+      ></Item>
+    ));
   };
-  return <div>{renderItems(productos)}</div>;
+  return <div className="item-list-container">{renderItems(productos)}</div>;
 };
 
 export default ItemList;

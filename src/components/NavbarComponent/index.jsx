@@ -1,9 +1,3 @@
-import {
-  NAME_CAT_1,
-  NAME_CAT_2,
-  NAME_CAT_3,
-  NAME_CAT_4,
-} from "../../utils/const";
 import CatComponent from "../CatComponent";
 import CartWidget from "../CartWidget";
 
@@ -11,7 +5,7 @@ export const NavbarComponent = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="http://localhost:3000/">
           HOME
         </a>
         <button
