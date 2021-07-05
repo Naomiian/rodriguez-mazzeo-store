@@ -1,6 +1,7 @@
 import "./item.css";
+import { Link } from "react-router-dom";
 
-const Item = ({ setSelectedId, producto }) => {
+const Item = ({ producto }) => {
   return (
     <>
       <div className="item">
@@ -8,8 +9,8 @@ const Item = ({ setSelectedId, producto }) => {
         <h1>{producto.title}</h1>
         <strong>{`$ ${producto.price}`}</strong>
         <h3>{producto.id}</h3>
-        <button onClick={() => setSelectedId(producto.id)}>
-          Mostrar Detalles
+        <button>
+          <Link to={`/items/${producto.id}`}> Mostrar Detalles</Link>
         </button>
       </div>
       <div className="item-separator" />

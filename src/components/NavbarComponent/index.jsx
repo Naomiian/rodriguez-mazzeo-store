@@ -1,13 +1,15 @@
 import CatComponent from "../CatComponent";
 import CartWidget from "../CartWidget";
+import { Link } from "react-router-dom";
+import React from "react";
 
 export const NavbarComponent = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="http://localhost:3000/">
+        <Link className="navbar-brand" to={"/"}>
           HOME
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,10 +23,9 @@ export const NavbarComponent = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <CatComponent />
-            <CatComponent />
-            <CatComponent />
-            <CatComponent />
+            <CatComponent categoria={"zapatos"} />
+            <CatComponent categoria={"televisores"} />
+            <CatComponent categoria={"libros"} />
             <CartWidget></CartWidget>
           </div>
         </div>
