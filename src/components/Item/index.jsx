@@ -9,9 +9,11 @@ const Item = ({ producto }) => {
         <h1>{producto.title}</h1>
         <strong>{`$ ${producto.price}`}</strong>
         <h3>{producto.id}</h3>
-        <button>
-          <Link to={`/items/${producto.id}`}> Mostrar Detalles</Link>
-        </button>
+        <Link to={`/items/${producto.id}`}>
+          <button type="button" className="btn btn-secondary">
+            Mostrar Detalles
+          </button>
+        </Link>
       </div>
       <div className="item-separator" />
     </>

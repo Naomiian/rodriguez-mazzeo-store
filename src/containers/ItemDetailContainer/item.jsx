@@ -6,7 +6,8 @@ import { getItem } from "../../utils/const";
 const ItemDetailContainer = () => {
   const [selectedItem, setSelectedItem] = useState({});
   const { idItems } = useParams();
-
+  const [stock, setStock] = useState(20);
+  const [ocultar, setOcultar] = useState(0);
   useEffect(() => {
     getItem(idItems)
       .then((response) => {
@@ -20,7 +21,19 @@ const ItemDetailContainer = () => {
       })
       .catch((error) => console.log(error));
   }, [idItems]);
-  return <ItemDetail producto={selectedItem} />;
+
+  function onAdd(cantidad) {
+    setStock(stock - cantidad);
+    setOcultar(1);
+  }
+  return (
+    <ItemDetail
+      producto={selectedItem}
+      stock={stock}
+      onAdd={onAdd}
+      ocultar={ocultar}
+    />
+  );
 };
 
 export default ItemDetailContainer;
