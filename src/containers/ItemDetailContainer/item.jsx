@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../../components/ItemDetail";
+import { CartContext } from "../../contexts/CartContext";
 import { getItem } from "../../utils/const";
 
 const ItemDetailContainer = () => {
+  const { y } = useContext(CartContext);
   const [selectedItem, setSelectedItem] = useState({});
   const { idItems } = useParams();
   const [stock, setStock] = useState(20);
@@ -23,7 +25,9 @@ const ItemDetailContainer = () => {
   }, [idItems]);
 
   function onAdd(cantidad) {
-    setStock(stock - cantidad);
+    setStock((prevStock) => prevStock - cantidad);
+    y((prevItems) => [...prevItems, { idItems, selectedItem, cantidad }]);
+
     setOcultar(1);
   }
   return (

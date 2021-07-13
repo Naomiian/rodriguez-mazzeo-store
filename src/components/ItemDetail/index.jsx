@@ -1,6 +1,7 @@
 import "./itemDetail.css";
 import ItemCountContainer from "../../containers/ItemCountContainer";
 import { Link } from "react-router-dom";
+
 const ItemDetail = ({ producto, stock, onAdd, ocultar }) => {
   return (
     <div className="item-detail-container">
