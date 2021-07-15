@@ -17,7 +17,13 @@ const ItemListContainer = () => {
       });
   }, [idCategoria]);
 
-  return <ItemList productos={productos} />;
+  return productos.length !== 0 ? (
+    <ItemList productos={productos} />
+  ) : (
+    <div className="spinner-border" role="status">
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
 };
 
 export default ItemListContainer;

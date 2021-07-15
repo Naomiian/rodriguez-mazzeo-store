@@ -5,7 +5,7 @@ import { CartContext } from "../../contexts/CartContext";
 import { getItem } from "../../utils/const";
 
 const ItemDetailContainer = () => {
-  const { y } = useContext(CartContext);
+  const { setCartItems } = useContext(CartContext);
   const [selectedItem, setSelectedItem] = useState({});
   const { idItems } = useParams();
   const [stock, setStock] = useState(20);
@@ -26,7 +26,10 @@ const ItemDetailContainer = () => {
 
   function onAdd(cantidad) {
     setStock((prevStock) => prevStock - cantidad);
-    y((prevItems) => [...prevItems, { idItems, selectedItem, cantidad }]);
+    setCartItems((prevItems) => [
+      ...prevItems,
+      { idItems, selectedItem, cantidad },
+    ]);
 
     setOcultar(1);
   }

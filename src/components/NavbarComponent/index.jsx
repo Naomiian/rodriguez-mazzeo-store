@@ -1,9 +1,12 @@
 import CatComponent from "../CatComponent";
+import { CartContext } from "../../contexts/CartContext";
+import { useContext } from "react";
 import CartWidget from "../CartWidget";
 import { Link } from "react-router-dom";
 import React from "react";
 
 export const NavbarComponent = () => {
+  const { cartItems } = useContext(CartContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -26,7 +29,7 @@ export const NavbarComponent = () => {
             <CatComponent categoria={"zapatos"} />
             <CatComponent categoria={"televisores"} />
             <CatComponent categoria={"libros"} />
-            <CartWidget></CartWidget>
+            {cartItems.length !== 0 && <CartWidget />}
           </div>
         </div>
       </div>

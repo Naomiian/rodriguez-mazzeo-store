@@ -1,21 +1,56 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import CartComponent from "../../components/CartComponent";
 import { CartContext } from "../../contexts/CartContext";
+import { Link } from "react-router-dom";
 const CartContainer = () => {
-  const { w, x } = useContext(CartContext);
-  console.log("cartContainer", x);
+  const { desgloce, setDesgloce, clearCarrito, cartItems } =
+    useContext(CartContext);
+
   const renderCart = (carrito) => {
-    return carrito.map((item) => (
-      <CartComponent key={item.idItems} item={item}></CartComponent>
-    ));
+    return carrito.map((item) => {
+      return <CartComponent key={item.idItems} item={item}></CartComponent>;
+    });
   };
-  return x.length > 0 ? (
+
+  useEffect(() => {
+    const aux = cartItems.reduce(
+      (acumulator, current) => {
+        return {
+          cantidad: acumulator.cantidad + current.cantidad,
+          precio:
+            acumulator.precio + current.selectedItem.price * current.cantidad,
+        };
+      },
+      { cantidad: 0, precio: 0 }
+    );
+    setDesgloce(aux);
+  }, [setDesgloce, cartItems]);
+
+  return cartItems.length > 0 ? (
     <>
-      <button onClick={w}>Limpiar Carrito</button>
-      <div>{renderCart(x)}</div>
+      <nav className="nav nav-pills nav-fill">
+        <button className="nav-item nav-link active" onClick={clearCarrito}>
+          Limpiar Carrito
+        </button>
+        <strong className="nav-item nav-link disabled">
+          Total de items: {desgloce.cantidad}
+        </strong>
+        <strong className="nav-item nav-link disabled">
+          Precio total: ${desgloce.precio}
+        </strong>
+      </nav>
+      <div>{renderCart(cartItems)}</div>
     </>
   ) : (
-    <h1>Carro Vacio</h1>
+    <>
+      <h1>Carro Vacio</h1>
+      <div>
+        Podes pasar y comprar
+        <Link to={"/categoria/algo"}>
+          <button> ALGO </button>
+        </Link>
+      </div>
+    </>
   );
 };
 
