@@ -1,7 +1,12 @@
 import "./item.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 const Item = ({ producto }) => {
+  const { setSelectedCat } = useContext(CartContext);
+  const categoria = useParams();
+  console.log(categoria);
   return (
     <>
       <div className="item">
@@ -10,7 +15,11 @@ const Item = ({ producto }) => {
         <strong>{`$ ${producto.price}`}</strong>
         <h3>{producto.id}</h3>
         <Link to={`/items/${producto.id}`}>
-          <button type="button" className="btn btn-secondary">
+          <button
+            onClick={() => setSelectedCat(categoria.idCategoria)}
+            type="button"
+            className="btn btn-secondary"
+          >
             Mostrar Detalles
           </button>
         </Link>

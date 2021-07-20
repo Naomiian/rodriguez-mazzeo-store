@@ -1,8 +1,11 @@
 import "./itemDetail.css";
 import ItemCountContainer from "../../containers/ItemCountContainer";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
-const ItemDetail = ({ producto, stock, onAdd, ocultar }) => {
+const ItemDetail = ({ producto, stock, onAdd }) => {
+  const { cartItems } = useContext(CartContext);
   return (
     <div className="item-detail-container">
       <div>
@@ -18,15 +21,15 @@ const ItemDetail = ({ producto, stock, onAdd, ocultar }) => {
       </div>
       <br />
       <div>
-        {ocultar ? (
+        {!cartItems.some((item) => item.idItems === producto.id) ? (
+          <ItemCountContainer stock={stock} onAdd={onAdd} />
+        ) : (
           <Link to={"/cart"}>
             <button type="button" className="btn btn-secondary">
               {" "}
               Compra finalizada
             </button>
           </Link>
-        ) : (
-          <ItemCountContainer stock={stock} onAdd={onAdd} />
         )}
       </div>
     </div>

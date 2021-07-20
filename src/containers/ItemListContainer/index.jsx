@@ -1,21 +1,26 @@
 import ItemList from "../../components/ItemList";
 import { useEffect, useState, React } from "react";
-import { waitForData } from "../../utils/const";
 import { useParams } from "react-router";
+import { getFirestore } from "../../firebase/client";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const { idCategoria } = useParams();
 
   useEffect(() => {
-    waitForData(idCategoria)
-      .then((response) => {
-        setProductos(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [idCategoria]);
+    async function getData() {
+      const DB = getFirestore();
+      const COLLECTION = DB.collection(idCategoria);
+      const RESPONSE = await COLLECTION.get();
+      setProductos(
+        RESPONSE.docs.map((element) => {
+          const { id } = element;
+          return { ...element.data(), id };
+        })
+      );
+    }
+    getData();
+  }, [idCategoria, setProductos]);
 
   return productos.length !== 0 ? (
     <ItemList productos={productos} />
