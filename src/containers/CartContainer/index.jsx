@@ -39,6 +39,9 @@ const CartContainer = () => {
           Precio total: ${desgloce.precio}
         </strong>
       </nav>
+      <Link to="/checkout">
+        <button className="nav-item nav-link active"> Ejecutar Compra </button>
+      </Link>
       <div>{renderCart(cartItems)}</div>
     </>
   ) : (

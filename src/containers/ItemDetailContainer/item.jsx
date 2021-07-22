@@ -5,9 +5,8 @@ import { CartContext } from "../../contexts/CartContext";
 import { getFirestore } from "../../firebase/client";
 
 const ItemDetailContainer = () => {
-  const { selectedCat, setCartItems } = useContext(CartContext);
-  console.log(selectedCat);
-  const [selectedItem, setSelectedItem] = useState({});
+  const { selectedCat, setCartItems, selectedItem, setSelectedItem } =
+    useContext(CartContext);
   const { idItems } = useParams();
   const [stock, setStock] = useState(20);
   useEffect(() => {
@@ -20,8 +19,7 @@ const ItemDetailContainer = () => {
       );
     }
     getItem();
-  }, [idItems]);
-  console.log(selectedItem);
+  }, [idItems, setSelectedItem, selectedCat]);
 
   function onAdd(cantidad) {
     setStock((prevStock) => prevStock - cantidad);
