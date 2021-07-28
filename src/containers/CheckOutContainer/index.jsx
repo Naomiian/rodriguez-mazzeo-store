@@ -6,7 +6,6 @@ import { CartContext } from "../../contexts/CartContext";
 const CheckOutContainer = () => {
   const { cartItems, desgloce } = useContext(CartContext);
   const crearNuevaOrden = (userInfo) => {
-    console.log("entra?");
     const db = getFirestore();
     const newUserInfo = {
       nombre: userInfo.nombre,
@@ -20,7 +19,12 @@ const CheckOutContainer = () => {
       fecha: new Date(),
       total: desgloce.precio,
     };
-    orden.add(nuevaOrden).then(({ id }) => console.log(id));
+    orden
+      .add(nuevaOrden)
+      .then(({ id }) =>
+        console.log("Este es el codigo de la orden de compra", id)
+      );
+    console.log("Esta es la Orden de Compra: ", nuevaOrden);
   };
   return <CheckOutComponent crearNuevaOrden={crearNuevaOrden} />;
 };

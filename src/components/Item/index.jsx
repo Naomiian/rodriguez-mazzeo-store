@@ -6,7 +6,6 @@ import { CartContext } from "../../contexts/CartContext";
 const Item = ({ producto }) => {
   const { setSelectedCat } = useContext(CartContext);
   const categoria = useParams();
-  console.log(categoria);
   return (
     <>
       <div className="item">

@@ -1,6 +1,10 @@
-const ItemCount = ({ stock, counter, setCounter, onAdd }) => {
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
+
+const ItemCount = ({ counter, setCounter, producto, buttonText }) => {
+  const { onAdd } = useContext(CartContext);
   const add = () => {
-    if (counter < stock) {
+    if (counter < producto.stock) {
       setCounter((prevCounter) => ++prevCounter);
     }
   };
@@ -51,11 +55,11 @@ const ItemCount = ({ stock, counter, setCounter, onAdd }) => {
           type="button"
           className="btn btn-secondary"
           onClick={() => {
-            onAdd(counter);
+            onAdd(counter, producto.id, producto);
           }}
         >
           {" "}
-          Ejecutar Compra{" "}
+          {buttonText}{" "}
         </button>
       </div>
     </>

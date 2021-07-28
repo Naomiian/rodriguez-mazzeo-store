@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import ItemCountContainer from "../../containers/ItemCountContainer";
 
 const CartComponent = ({ item }) => {
   const { removerCarrito } = useContext(CartContext);
@@ -11,7 +12,14 @@ const CartComponent = ({ item }) => {
           {" "}
           <h3>{item.selectedItem.title}</h3>
           <strong>{`Precio: $ ${item.selectedItem.price}`}</strong>
-          <h3>Cantidad: {item.cantidad}</h3>
+          <div>
+            <h3>Cantidad: </h3>
+            <ItemCountContainer
+              producto={item.selectedItem}
+              buttonText={"Guardar Cambios"}
+              cantidad={item.cantidad}
+            />
+          </div>
         </>
         <button onClick={() => removerCarrito(item.idItems)}>
           {" "}

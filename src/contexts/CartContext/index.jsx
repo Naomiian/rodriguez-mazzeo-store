@@ -17,6 +17,16 @@ export const CartContextComponent = ({ children }) => {
     setDesgloce({ cantidad: 0, precio: 0 });
   }
 
+  function onAdd(cantidad, idItems, selectedItem) {
+    const nuevoCarrito = cartItems;
+    setCartItems(nuevoCarrito.filter((item) => item.idItems !== idItems));
+
+    setCartItems((prevItems) => [
+      ...prevItems,
+      { idItems, selectedItem, cantidad },
+    ]);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -30,6 +40,7 @@ export const CartContextComponent = ({ children }) => {
         setSelectedCat,
         selectedItem,
         setSelectedItem,
+        onAdd,
       }}
     >
       {children}
