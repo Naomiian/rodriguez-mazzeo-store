@@ -27,6 +27,13 @@ export const CartContextComponent = ({ children }) => {
     ]);
   }
 
+  function verifyStock() {
+    const aux = cartItems.filter(
+      (item) => item.cantidad > item.selectedItem.stock
+    );
+    return aux.length;
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -41,6 +48,7 @@ export const CartContextComponent = ({ children }) => {
         selectedItem,
         setSelectedItem,
         onAdd,
+        verifyStock,
       }}
     >
       {children}

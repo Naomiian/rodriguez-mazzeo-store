@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
       const COLLECCION = DB.collection(selectedCat);
       const ITEM = COLLECCION.doc(idItems);
       ITEM.get().then((data) =>
-        setSelectedItem({ id: data.id, ...data.data() })
+        setSelectedItem({ id: data.id, cat: selectedCat, ...data.data() })
       );
     }
     getItem();
